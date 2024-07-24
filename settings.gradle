@@ -1,0 +1,4 @@
+rootProject.name = 'BookService'
+include 'api'
+include 'db'
+
