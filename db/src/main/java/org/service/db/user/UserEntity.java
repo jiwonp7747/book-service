@@ -1,13 +1,13 @@
 package org.service.db.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.service.db.BaseEntity;
+import org.service.db.user.enums.UserStatus;
 
 import java.time.LocalDateTime;
 
@@ -20,17 +20,20 @@ import java.time.LocalDateTime;
 @SuperBuilder
 public class UserEntity extends BaseEntity {
 
-    private Long id;
-
+    @Column(length = 50, nullable = false)
     private String name;
 
+    @Column(length = 50, nullable = false)
     private String password;
 
+    @Column(length = 150, nullable = false)
     private String email;
 
-    private String status;
+    @Column(length = 50, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
-    private LocalDateTime logined_at;
+    private LocalDateTime last_login_at;
     
     private LocalDateTime registered_at;
 
